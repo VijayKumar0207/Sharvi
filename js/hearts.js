@@ -85,3 +85,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   animate();
 });
+
+slideshow.addEventListener("click", () => {
+  slideIndex = (slideIndex + 1) % memories.length;
+  slideImg.style.opacity = 0;
+
+  setTimeout(()=>{
+    slideImg.src = memories[slideIndex];
+    slideImg.style.opacity = 1;
+  },300);
+});
