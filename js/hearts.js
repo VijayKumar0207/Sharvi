@@ -1,4 +1,4 @@
-// ❤️ SURPRISE CINEMATIC FLOW – FINAL FIX
+// ❤️ PHOTO FIRST, QUOTES NEXT – CLEAN FLOW
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -28,15 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let slideIndex = 0;
   let started = false;
 
-  btn.addEventListener("click", () => {
+  btn.onclick = () => {
 
-    if(started) return; // 🔒 only once
+    if(started) return;
     started = true;
 
     // 🎵 music
     music?.play().catch(()=>{});
 
-    // ❤️ HEART BLAST (FIRST)
+    // ❤️ HEART BLAST
     for(let i=0;i<120;i++){
       hearts.push({
         x: innerWidth/2,
@@ -47,12 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // 💌 MESSAGE (AFTER 1s)
-    setTimeout(()=>{
-      msg.classList.add("show");
-    },1000);
-
-    // 🖼️ SLIDESHOW (AFTER 2s)
+    // 🖼️ PHOTO SLIDESHOW – FIRST
     setTimeout(()=>{
       slideshow.classList.add("show");
 
@@ -66,10 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
         },400);
 
       },3000);
+    },800);
 
-    },2000);
-
-  });
+    // 💌 QUOTES – AFTER PHOTO SETTLES
+    setTimeout(()=>{
+      msg.classList.add("show");
+    },2500);
+  };
 
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -86,5 +84,4 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
   }
   animate();
-
 });
