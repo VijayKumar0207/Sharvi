@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Surprise 🎁</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <span class="logo">SHARVI ❤️</span>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="story.html">Story</a>
+    <a href="memories.html">Memories</a>
+    <a href="message.html">Message</a>
+    <a href="surprise.html" class="active">Surprise</a>
+  </div>
+</nav>
+
+<!-- 🎵 MUSIC -->
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<audio id="bgMusic" loop>
+  <source src="music/love.mp3">
+</audio>
+
+<div class="container">
+  <h1>Secret Surprise 🔐</h1>
+
+  <!-- PASSWORD BOX -->
+  <div id="lockBox">
+    <input type="password" id="pwd" placeholder="Enter Password ❤️"
+      style="padding:12px 20px;border-radius:30px;border:none;text-align:center;">
+    <br><br>
+    <button onclick="checkPassword()"
+      style="padding:12px 30px;border:none;border-radius:30px;background:#e75480;color:white;font-size:18px;">
+      UNLOCK 🔓
+    </button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <!-- SURPRISE CONTENT -->
+  <div id="surpriseBox" style="display:none;">
+    <h2 id="surpriseText">💖 I LOVE YOU SHARVI ♾️💖</h2>
+    <button onclick="heartBlast()"
+      style="padding:15px 30px;border:none;border-radius:30px;background:#ff4d6d;color:white;font-size:18px;">
+      OPEN 💥
+    </button>
+  </div>
+</div>
+
+<script src="js/hearts.js"></script>
+
+<script>
+const music=document.getElementById("bgMusic");
+window.onload=()=>{ if(localStorage.getItem("music")==="on") music.play(); }
+function toggleMusic(){
+  music.paused?(music.play(),localStorage.setItem("music","on"))
+               :(music.pause(),localStorage.setItem("music","off"));
+}
+
+/* 🔐 PASSWORD CHECK */
+const SECRET = "sharvi"; // 👉 password change panna inga maathu
+
+function checkPassword(){
+  const input = document.getElementById("pwd").value;
+  if(input === SECRET){
+    document.getElementById("lockBox").style.display="none";
+    document.getElementById("surpriseBox").style.display="block";
+    heartBlast(); // unlock pannumbodhe blast
+  }else{
+    document.getElementById("error").innerText="Wrong password 💔";
+  }
+}
+
+/* ❤️ HEART BLAST */
+function heartBlast(){
+  for(let i=0;i<80;i++){
+    let h=document.createElement("span");
+    h.innerHTML="❤️";
+    h.style.position="fixed";
+    h.style.left=Math.random()*100+"%";
+    h.style.top="100%";
+    h.style.fontSize=(20+Math.random()*20)+"px";
+    h.style.animation="fly 2.5s linear";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),2500);
+  }
+}
+</script>
+
+<style>
+@keyframes fly{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-120vh);opacity:0;}
+}
+</style>
+
+</body>
+</html>

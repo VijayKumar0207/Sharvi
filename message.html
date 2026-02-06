@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Message 💌</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <span class="logo">SHARVI ❤️</span>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="story.html">Story</a>
+    <a href="memories.html">Memories</a>
+    <a href="message.html" class="active">Message</a>
+    <a href="surprise.html">Surprise</a>
+  </div>
+</nav>
+
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<audio id="bgMusic" loop>
+  <source src="music/love.mp3">
+</audio>
+
+<div class="container">
+  <h1>For You 💖</h1>
+  <div class="card">
+    <p id="typeText"></p>
+  </div>
+</div>
+
+<script src="js/hearts.js"></script>
+
+<script>
+const music=document.getElementById("bgMusic");
+window.onload=()=>{
+  if(localStorage.getItem("music")==="on")music.play();
+  typeEffect();
+}
+function toggleMusic(){music.paused?(music.play(),localStorage.setItem("music","on")):(music.pause(),localStorage.setItem("music","off"))}
+
+const msg="Nee illaama naan illa ❤️\nEvery second nee thaan ennoda world 🌍\nForever & Always ♾️";
+let i=0;
+function typeEffect(){
+  if(i<msg.length){
+    document.getElementById("typeText").innerHTML+=msg.charAt(i)==="\n"?"<br>":msg.charAt(i);
+    i++;
+    setTimeout(typeEffect,60);
+  }
+}
+</script>
+
+</body>
+</html>

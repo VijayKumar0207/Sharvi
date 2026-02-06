@@ -1,0 +1,141 @@
+/* 🌸 GLOBAL */
+*{
+  box-sizing:border-box;
+}
+body{
+  margin:0;
+  font-family:"Segoe UI",sans-serif;
+  background:#fff0f5;
+  text-align:center;
+  color:#333;
+}
+
+/* 🔝 NAVBAR */
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#ffb6c1;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+nav a,
+.logo{
+  color:white;
+  font-weight:bold;
+  text-decoration:none;
+  margin:0 10px;
+}
+nav a.active{
+  background:white;
+  color:#e75480;
+  padding:6px 14px;
+  border-radius:20px;
+}
+
+/* 📦 CONTAINER */
+.container{
+  padding:60px 20px;
+}
+
+/* 🧾 CARD */
+.card{
+  background:white;
+  padding:30px;
+  margin:auto;
+  max-width:700px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+/* 🎵 MUSIC ICON */
+.music-btn{
+  position:fixed;
+  top:90px;
+  right:20px;
+  z-index:999;
+  background:#e75480;
+  color:white;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-size:18px;
+  box-shadow:0 5px 15px rgba(0,0,0,.3);
+}
+
+/* ❤️ HEARTS */
+.hearts{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  overflow:hidden;
+}
+.heart{
+  position:absolute;
+  bottom:-10px;
+  font-size:22px;
+  animation:float 8s linear infinite;
+}
+@keyframes float{
+  to{
+    transform:translateY(-110vh);
+    opacity:0;
+  }
+}
+
+/* 📸 MEMORIES GRID */
+.timeline{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  max-width:1000px;
+  margin:auto;
+}
+
+/* 📅 YEAR CARD */
+.year{
+  background:white;
+  padding:15px;
+  border-radius:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,.1);
+}
+.year h3{
+  margin:12px 0 5px;
+}
+.year p{
+  margin:0;
+  font-size:14px;
+}
+
+/* 🖼️ IMAGE (ANY SIZE SAFE) */
+.year img{
+  width:100%;
+  aspect-ratio:3 / 4;   /* 🔥 portrait / 9:16 / 3:4 safe */
+  object-fit:cover;
+  border-radius:15px;
+}
+
+/* 🔍 IMAGE VIEWER */
+.image-viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+.image-viewer img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}

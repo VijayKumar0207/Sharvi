@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Our Story ❤️</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <span class="logo">SHARVI ❤️</span>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="story.html" class="active">Story</a>
+    <a href="memories.html">Memories</a>
+    <a href="message.html">Message</a>
+    <a href="surprise.html">Surprise</a>
+  </div>
+</nav>
+
+<!-- 🎵 MUSIC -->
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<audio id="bgMusic" loop>
+  <source src="music/love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>Our Love Story 📖</h1>
+  <div class="card">
+    <p>11th standard la start aana namma kaadhal ❤️</p>
+    <p>7 varusham thaandi innum strong-aa irukku 💪</p>
+    <p><b>SHARVI forever ♾️</b></p>
+  </div>
+</div>
+
+<script src="js/hearts.js"></script>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+window.onload = () => {
+  if (localStorage.getItem("music") === "on") {
+    music.play();
+  }
+};
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    localStorage.setItem("music", "on");
+  } else {
+    music.pause();
+    localStorage.setItem("music", "off");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Memories ❤️</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <span class="logo">SHARVI ❤️</span>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="story.html">Story</a>
+    <a href="memories.html" class="active">Memories</a>
+    <a href="message.html">Message</a>
+    <a href="surprise.html">Surprise</a>
+  </div>
+</nav>
+
+<!-- 🎵 MUSIC -->
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+<audio id="bgMusic" loop>
+  <source src="music/love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>Our Journey ❤️</h1>
+
+  <div class="timeline">
+    <div class="year">
+      <img src="images/year1.jpg" onclick="openViewer(this.src)">
+      <h3>2019</h3>
+      <p>Love started ❤️</p>
+    </div>
+
+    <div class="year">
+      <img src="images/year2.jpg" onclick="openViewer(this.src)">
+      <h3>2020</h3>
+      <p>Distance but close 💕</p>
+    </div>
+
+    <div class="year">
+      <img src="images/year3.jpg" onclick="openViewer(this.src)">
+      <h3>2021</h3>
+      <p>Still strong 💪</p>
+    </div>
+
+    <div class="year">
+      <img src="images/year4.jpg" onclick="openViewer(this.src)">
+      <h3>2022</h3>
+      <p>Dreams 🌸</p>
+    </div>
+
+    <div class="year">
+      <img src="images/year5.jpg" onclick="openViewer(this.src)">
+      <h3>2023</h3>
+      <p>Only you ❤️</p>
+    </div>
+
+    <div class="year">
+      <img src="images/year6.jpg" onclick="openViewer(this.src)">
+      <h3>2024</h3>
+      <p>Forever ♾️</p>
+    </div>
+  </div>
+</div>
+
+<!-- ❤️ HEARTS -->
+<script src="js/hearts.js"></script>
+
+<!-- 🎵 MUSIC SCRIPT -->
+<script>
+const music = document.getElementById("bgMusic");
+
+window.onload = () => {
+  if (localStorage.getItem("music") === "on") {
+    music.play();
+  }
+};
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    localStorage.setItem("music", "on");
+  } else {
+    music.pause();
+    localStorage.setItem("music", "off");
+  }
+}
+</script>
+
+<!-- 🔍 FULLSCREEN IMAGE VIEWER -->
+<div class="image-viewer" id="imageViewer" onclick="closeViewer()">
+  <img id="viewerImg">
+</div>
+
+<script>
+function openViewer(src){
+  document.getElementById("viewerImg").src = src;
+  document.getElementById("imageViewer").style.display = "flex";
+}
+function closeViewer(){
+  document.getElementById("imageViewer").style.display = "none";
+}
+</script>
+
+</body>
+</html>
