@@ -1,13 +1,15 @@
-/* 🌸 GLOBAL */
+/* 🌸 GLOBAL RESET */
 *{
   box-sizing:border-box;
-}
-body{
   margin:0;
+  padding:0;
+}
+
+body{
   font-family:"Segoe UI",sans-serif;
   background:#fff0f5;
-  text-align:center;
   color:#333;
+  text-align:center;
 }
 
 /* 🔝 NAVBAR */
@@ -21,6 +23,7 @@ nav{
   justify-content:space-between;
   align-items:center;
 }
+
 nav a,
 .logo{
   color:white;
@@ -28,6 +31,7 @@ nav a,
   text-decoration:none;
   margin:0 10px;
 }
+
 nav a.active{
   background:white;
   color:#e75480;
@@ -50,46 +54,22 @@ nav a.active{
   box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
 
-/* 🎵 MUSIC ICON */
+/* 🎵 MUSIC BUTTON */
 .music-btn{
   position:fixed;
   top:90px;
   right:20px;
-  z-index:999;
-  background:#e75480;
-  color:white;
   width:45px;
   height:45px;
+  background:#e75480;
+  color:white;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  font-size:18px;
+  z-index:999;
   box-shadow:0 5px 15px rgba(0,0,0,.3);
-}
-
-/* ❤️ HEARTS */
-.hearts{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  overflow:hidden;
-}
-.heart{
-  position:absolute;
-  bottom:-10px;
-  font-size:22px;
-  animation:float 8s linear infinite;
-}
-@keyframes float{
-  to{
-    transform:translateY(-110vh);
-    opacity:0;
-  }
 }
 
 /* 📸 MEMORIES GRID */
@@ -101,45 +81,47 @@ nav a.active{
   margin:auto;
 }
 
-/* 📅 YEAR CARD */
 .year{
   background:white;
   padding:15px;
   border-radius:20px;
   box-shadow:0 10px 20px rgba(0,0,0,.1);
 }
+
+.year img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:15px;
+  cursor:pointer;
+}
+
 .year h3{
   margin:12px 0 5px;
 }
-.year p{
-  margin:0;
-  font-size:14px;
-}
 
-/* 🖼️ IMAGE (ANY SIZE SAFE) */
-.year img{
-  width:100%;
-  aspect-ratio:3 / 4;   /* 🔥 portrait / 9:16 / 3:4 safe */
-  object-fit:cover;
-  border-radius:15px;
+.year p{
+  font-size:14px;
 }
 
 /* 🔍 IMAGE VIEWER */
 .image-viewer{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,.85);
   display:none;
   align-items:center;
   justify-content:center;
   z-index:9999;
 }
+
 .image-viewer img{
   max-width:90%;
   max-height:90%;
   border-radius:20px;
 }
 
+/* 💝 SURPRISE BUTTON */
 #surpriseBtn{
   padding:15px 30px;
   font-size:18px;
@@ -151,16 +133,16 @@ nav a.active{
   box-shadow:0 10px 20px rgba(0,0,0,.2);
 }
 
+/* ❤️ LOVE MESSAGE POPUP */
 .love-msg{
   position:fixed;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%) scale(0);
-  background:rgba(255,255,255,.2);
+  background:rgba(255,255,255,.25);
   backdrop-filter:blur(12px);
   padding:30px;
   border-radius:25px;
-  text-align:center;
   color:#fff;
   transition:.5s;
   z-index:999;
@@ -170,23 +152,26 @@ nav a.active{
   transform:translate(-50%,-50%) scale(1);
 }
 
+/* ❤️ HEART CANVAS */
 #heartCanvas{
   position:fixed;
   inset:0;
   pointer-events:none;
+  z-index:1;
 }
 
+/* 🖼️ SLIDESHOW (ONLY ONE – FIXED) */
 .slideshow{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,.85);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   opacity:0;
   pointer-events:none;
-  transition:0.8s;
+  transition:.6s;
   z-index:998;
 }
 
@@ -200,43 +185,35 @@ nav a.active{
   max-height:70%;
   border-radius:20px;
   box-shadow:0 20px 40px rgba(255,0,100,.4);
-  transition:0.8s;
 }
 
 .caption{
-  color:#fff;
-  margin-top:20px;
-  font-size:20px;
-}
-
-.slideshow{
-  position:fixed;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%) scale(0);
-  background:rgba(255,255,255,0.15);
-  backdrop-filter:blur(10px);
-  padding:15px;
-  border-radius:20px;
-  text-align:center;
-  transition:.5s;
-  z-index:998;
-}
-
-.slideshow.show{
-  transform:translateX(-50%) scale(1);
-}
-
-.slideshow img{
-  width:220px;
-  height:280px;
-  object-fit:cover;
-  border-radius:15px;
-  transition:.4s;
-}
-
-.caption{
-  margin-top:8px;
+  margin-top:15px;
   color:white;
+  font-size:20px;
   font-weight:600;
+}
+
+/* 🔐 PASSWORD INPUT */
+#pwd{
+  padding:12px 20px;
+  border-radius:30px;
+  border:none;
+  text-align:center;
+  width:220px;
+}
+
+#lockBox button{
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:#e75480;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+}
+
+#error{
+  margin-top:10px;
+  color:red;
 }
