@@ -1,12 +1,12 @@
-// ❤️ PHOTO FIRST, QUOTES NEXT – CLEAN FLOW
+// ❤️ SURPRISE – HEART BLAST + SLIDESHOW + CLOSE
 
 document.addEventListener("DOMContentLoaded", () => {
 
   const btn = document.getElementById("surpriseBtn");
-  const msg = document.getElementById("loveMsg");
   const music = document.getElementById("bgMusic");
   const slideshow = document.getElementById("slideshow");
   const slideImg = document.getElementById("slideImg");
+  const closeBtn = document.getElementById("closeSurprise");
   const canvas = document.getElementById("heartCanvas");
 
   if(!btn) return;
@@ -27,13 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let hearts = [];
   let slideIndex = 0;
   let started = false;
+  let slideTimer;
 
   btn.onclick = () => {
 
     if(started) return;
     started = true;
 
-    // 🎵 music
     music?.play().catch(()=>{});
 
     // ❤️ HEART BLAST
@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // 🖼️ PHOTO SLIDESHOW – FIRST
+    // 🖼️ SLIDESHOW
     setTimeout(()=>{
       slideshow.classList.add("show");
 
-      setInterval(()=>{
+      slideTimer = setInterval(()=>{
         slideIndex = (slideIndex + 1) % memories.length;
         slideImg.style.opacity = 0;
 
@@ -61,12 +61,16 @@ document.addEventListener("DOMContentLoaded", () => {
         },400);
 
       },3000);
-    },800);
 
-    // 💌 QUOTES – AFTER PHOTO SETTLES
-    setTimeout(()=>{
-      msg.classList.add("show");
-    },2500);
+    },800);
+  };
+
+  // ❌ CLOSE BUTTON
+  closeBtn.onclick = () => {
+    slideshow.classList.remove("show");
+    clearInterval(slideTimer);
+    hearts = [];
+    started = false;
   };
 
   function animate(){
@@ -84,14 +88,5 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
   }
   animate();
-});
 
-slideshow.addEventListener("click", () => {
-  slideIndex = (slideIndex + 1) % memories.length;
-  slideImg.style.opacity = 0;
-
-  setTimeout(()=>{
-    slideImg.src = memories[slideIndex];
-    slideImg.style.opacity = 1;
-  },300);
 });
