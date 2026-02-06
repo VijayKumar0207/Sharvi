@@ -208,3 +208,35 @@ nav a.active{
   margin-top:20px;
   font-size:20px;
 }
+
+.slideshow{
+  position:fixed;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%) scale(0);
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(10px);
+  padding:15px;
+  border-radius:20px;
+  text-align:center;
+  transition:.5s;
+  z-index:998;
+}
+
+.slideshow.show{
+  transform:translateX(-50%) scale(1);
+}
+
+.slideshow img{
+  width:220px;
+  height:280px;
+  object-fit:cover;
+  border-radius:15px;
+  transition:.4s;
+}
+
+.caption{
+  margin-top:8px;
+  color:white;
+  font-weight:600;
+}
