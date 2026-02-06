@@ -1,4 +1,4 @@
-// ❤️ SURPRISE HEART BLAST + SLIDESHOW (FIXED)
+// ❤️ SURPRISE CINEMATIC FLOW – FINAL FIX
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slideImg = document.getElementById("slideImg");
   const canvas = document.getElementById("heartCanvas");
 
-  if(!btn || !canvas) return; // safety
+  if(!btn) return;
 
   const ctx = canvas.getContext("2d");
   canvas.width = innerWidth;
@@ -26,34 +26,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let hearts = [];
   let slideIndex = 0;
+  let started = false;
 
   btn.addEventListener("click", () => {
 
-    // 💌 popup message
-    msg.classList.add("show");
+    if(started) return; // 🔒 only once
+    started = true;
 
     // 🎵 music
     music?.play().catch(()=>{});
 
-    // 🖼️ slideshow
-    slideshow.classList.add("show");
-
-    // ❤️ HEART BLAST
-    for(let i=0;i<80;i++){
+    // ❤️ HEART BLAST (FIRST)
+    for(let i=0;i<120;i++){
       hearts.push({
         x: innerWidth/2,
         y: innerHeight/2,
-        size: 20 + Math.random()*20,
-        speed: 1 + Math.random()*2,
+        size: 18 + Math.random()*25,
+        speed: 1 + Math.random()*3,
         alpha: 1
       });
     }
 
-    // 🖼️ slideshow auto change
-    setInterval(()=>{
-      slideIndex = (slideIndex + 1) % memories.length;
-      slideImg.src = memories[slideIndex];
-    },3000);
+    // 💌 MESSAGE (AFTER 1s)
+    setTimeout(()=>{
+      msg.classList.add("show");
+    },1000);
+
+    // 🖼️ SLIDESHOW (AFTER 2s)
+    setTimeout(()=>{
+      slideshow.classList.add("show");
+
+      setInterval(()=>{
+        slideIndex = (slideIndex + 1) % memories.length;
+        slideImg.style.opacity = 0;
+
+        setTimeout(()=>{
+          slideImg.src = memories[slideIndex];
+          slideImg.style.opacity = 1;
+        },400);
+
+      },3000);
+
+    },2000);
+
   });
 
   function animate(){
